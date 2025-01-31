@@ -7,8 +7,22 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home')}}">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    
+        <div class="auth-buttons">
+            <a href="{{ url_for('login') }}" class="login-btn">Log In / Register</a>
+        </div>
+    </div>
+    <br>
+
     <div class = "login-menu">
-        
+
     </div>
 </body>
 </html>

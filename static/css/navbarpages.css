@@ -5,6 +5,9 @@
     display: flex;
     justify-content: space-around;
     position: relative;
+    position: sticky; /* Makes it sticky */
+    top: 0; /* Sticks it to the top */
+    z-index: 1000; /* Ensures it's above other content */
 }
 
 .navbar ul {
@@ -107,4 +110,46 @@
 .auth-buttons .login-btn:hover {
     background-color: #3b4f4f;
     color: white;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 60%; /* Container width */
+    margin: auto;
+    overflow: hidden; /* Hide images outside the slider */
+}
+
+.image-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Set width to 100% to ensure no partial images */
+}
+
+.image-slider img {
+    width: 100%; /* Each image takes up 100% of the container width */
+    height: auto;
+    object-fit: cover; /* Ensure images are covered properly without stretching */
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.684);
+}
+
+.slider-btn {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#prev {
+    left: 0;
+}
+
+#next {
+    right: 0;
 }

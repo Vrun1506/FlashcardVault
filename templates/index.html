@@ -7,17 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbarpages.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 </head>
-
-
-
-
-
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="{{ url_for('home')}}">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#products">Products</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -33,12 +28,20 @@
         <h1>Flashcard Vault</h1>
         <h2>Ace Your Exams One Card at a Time</h2>
     </div>
-    
-    <div class = "image-slider">
-        <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Image 1">
-        <img src="{{ url_for('static', filename='images/image2.jpg') }}" alt="Image 2">
-        <img src="{{ url_for('static', filename='images/image3.jpg') }}" alt="Image 3">
+
+    <div class="slider-container">
+        <button id="prev" class="slider-btn">&#10094;</button> <!-- Left Arrow -->
+        <div class="image-slider">
+            <img src="{{ url_for('static', filename='images/ComputerScienceAnkiHomepage.png') }}" alt="A level Computer Science Anki Deck">
+            <img src="{{ url_for('static', filename='images/ClozeDeletionNotRevealed.png') }}" alt="Cloze Deletion Example">
+            <img src="{{ url_for('static', filename='images/ClozeDeletionAnswerRevealed.png') }}" alt="Cloze Deletion Answer Revealed">
+            <img src="{{ url_for('static', filename='images/ImageOcclusionExemplar.png') }}" alt="Image Occlusion Example">
+        </div>
+        <button id="next" class="slider-btn">&#10095;</button> <!-- Right Arrow -->
     </div>
+    
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>  <!-- Link to external JS file -->
+    </body>
     
     
 </body>
