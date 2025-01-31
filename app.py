@@ -14,11 +14,11 @@ def login():
     return render_template('loginorregister.html')
 
 @app.route('/about')
-def login():
+def about():
     return render_template('About.html')
 
 @app.route('/products')
-def login():
+def products():
     return render_template('Products.html')
 
 
