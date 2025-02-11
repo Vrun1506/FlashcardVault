@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Fjalla One", serif;
+    background-color: #dadadae0;
+}
+
+
 .navbar {
     height: 50px;
     padding: 10px;
@@ -115,7 +123,7 @@
 .slider-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     width: 60%; /* Container width */
     margin: auto;
@@ -134,6 +142,8 @@
     object-fit: cover; /* Ensure images are covered properly without stretching */
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.684);
+    opacity: 0.6;
+    filter: grayscale(40%);
 }
 
 .slider-btn {
@@ -152,4 +162,10 @@
 
 #next {
     right: 0;
+}
+
+.page-divider-1 {
+    height: 50px;
+    background-color: #24527a;
+    margin: 30px 0;
 }
