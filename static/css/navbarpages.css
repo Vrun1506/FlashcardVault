@@ -123,37 +123,43 @@ body {
 .slider-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Center the images */
     position: relative;
-    width: 60%; /* Container width */
+    width: 50%; /* Reduce the size */
+    max-width: 600px; /* Ensures it's not too big */
     margin: auto;
-    overflow: hidden; /* Hide images outside the slider */
+    overflow: hidden; /* Ensures no overlap */
 }
 
+/* Fix image display issues */
 .image-slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 100%; /* Set width to 100% to ensure no partial images */
+    width: 100%; 
 }
 
 .image-slider img {
-    width: 100%; /* Each image takes up 100% of the container width */
-    height: auto;
-    object-fit: cover; /* Ensure images are covered properly without stretching */
+    width: 100%; /* Make sure images fit */
+    max-height: 250px; /* Reduce size */
+    object-fit: contain; /* Prevent cropping */
     border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.684);
-    opacity: 0.6;
-    filter: grayscale(40%);
+    opacity: 0.9;
+    filter: grayscale(20%);
 }
 
+/* Navigation buttons */
 .slider-btn {
     position: absolute;
+    top: 50%;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     font-size: 24px;
+    transform: translateY(-50%);
+    z-index: 10; /* Ensures buttons are clickable */
 }
 
 #prev {
@@ -164,6 +170,7 @@ body {
     right: 0;
 }
 
+/* Ensure no weird spacing issues */
 .page-divider-1 {
     height: 50px;
     background-color: #24527a;
