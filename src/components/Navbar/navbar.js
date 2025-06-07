@@ -21,6 +21,11 @@ export default function Navbar() {
           <Link href="/#contact">Contact</Link>
         </li>
       </ul>
+
+
+      <Link href = "/login" passHref>
+        <button className={styles.loginButton}>Log In/Register</button>
+      </Link>
     </nav>
   );
 }
