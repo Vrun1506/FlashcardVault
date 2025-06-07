@@ -1,0 +1,58 @@
+/* slider.module.css */
+
+/* Container holding all slides */
+.slider {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Base slide style */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 400px;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Active slide */
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Navigation buttons */
+.prev-image,
+.next-image {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.prev-image {
+  left: 10px;
+}
+
+.next-image {
+  right: 10px;
+}
+
+.prev-image:hover,
+.next-image:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
