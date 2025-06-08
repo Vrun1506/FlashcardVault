@@ -1,5 +1,6 @@
 
-<img src="./images/FlashcardVaultLogo.jpeg" width="200"/>
+<img src="https://raw.githubusercontent.com/Vrun1506/FlashcardVault/main/public/images/FlashcardVaultLogo.jpeg" width="200"/>
+
 
 ## Welcome
 This is my EdTech business selling the A level flashcards, which I created and used while studying for my A level exams, at affordable prices. 
