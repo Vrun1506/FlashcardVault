@@ -1,13 +1,13 @@
+/* Navbar styles */
 .navbar {
     height: 70px;
     padding: 10px;
     background-color: #5dacbd;
     display: flex;
     justify-content: space-around;
-    position: relative;
-    position: sticky; /* Makes it sticky */
-    top: 0; /* Sticks it to the top */
-    z-index: 1000; /* Ensures it's above other content */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar ul {
@@ -20,13 +20,13 @@
 .navbar ul li {
     display: inline;
     position: relative;
-    margin: 0 15px; /* Space between links */
+    margin: 0 15px;
 }
 
 .navbar ul li a {
     font-family: "Fjalla One", serif;
     font-size: 20px;
-    color: #3b4f4f; /* Initial text color */
+    color: #3b4f4f;
     font-weight: bold;
     text-decoration: none;
     padding: 15px 50px;
@@ -35,7 +35,6 @@
     transition: all 0.3s ease;
 }
 
-/* Box effect (not animated here) */
 .navbar ul li a::before {
     content: '';
     position: absolute;
@@ -46,39 +45,49 @@
     border: 0.5px thin transparent;
     background-color: transparent;
     border-radius: 10px;
-    transition: all 0.6s ease; /* Slower animation */
+    transition: all 0.6s ease;
     box-sizing: border-box;
 }
 
-/* Underline effect */
 .navbar ul li a::after {
     content: '';
     position: absolute;
-    bottom: 0; /* Position just under the text */
-    left: 50%; /* Position at the center of the link */
-    transform: translateX(-50%) scaleX(0); /* Initially hidden, centered */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
     width: 100%;
     height: 2px;
-    background-color: #ff6f61; /* Warm coral underline */
-    transition: transform 0.3s ease; /* Animate width from the center */
+    background-color: #ff6f61;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect */
 .navbar ul li a:hover {
-    color: #3b4f4f; /* Dark teal color for text */
+    color: #3b4f4f;
 }
 
 .navbar ul li a:hover::before {
-    border-color: #3b4f4f; /* Dark teal border around the box */
-    background-color: rgba(59, 79, 79, 0.1); /* Slight dark teal background */
+    border-color: #3b4f4f;
+    background-color: rgba(59, 79, 79, 0.1);
 }
 
 .navbar ul li a:hover::after {
-    transform: translateX(-50%) scaleX(1); /* Expand underline from center */
+    transform: translateX(-50%) scaleX(1);
 }
 
 .fjalla-one-regular {
     font-family: "Fjalla One", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.navbar .loginButton {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
