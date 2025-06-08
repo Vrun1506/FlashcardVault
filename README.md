@@ -1,5 +1,12 @@
-https://media.licdn.com/dms/image/v2/D4E22AQFB8GE9y-Y9Mw/feedshare-shrink_800/B4EZT.M6xTHcAg-/0/1739431587676?e=1752105600&v=beta&t=ox_e25bnuaUSMf_fdUdQPzDqo0lE54CYXyUxDcUNCVA
 
+![Flashcard Vault Logo](https://raw.githubusercontent.com/Vrun1506/FlashcardVault/main/public/images/FlashcardVaultLogo.jpeg)
+
+## Welcome
+This is my EdTech business selling the A level flashcards, which I created and used while studying for my A level exams, at affordable prices. 
+
+My aim is to help as many people ace their exams, one card at a time. 
+
+Making flashcards can be a long and tedious process and I designed my website to facilitate this process by providing premium quality flashcards that have been tried and tested by my friends and I.
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
