@@ -1,5 +1,5 @@
 
-![Flashcard Vault Logo](https://raw.githubusercontent.com/Vrun1506/FlashcardVault/main/public/images/FlashcardVaultLogo.jpeg)
+<img src="./images/FlashcardVaultLogo.jpeg" width="200"/>
 
 ## Welcome
 This is my EdTech business selling the A level flashcards, which I created and used while studying for my A level exams, at affordable prices. 
@@ -7,6 +7,9 @@ This is my EdTech business selling the A level flashcards, which I created and u
 My aim is to help as many people ace their exams, one card at a time. 
 
 Making flashcards can be a long and tedious process and I designed my website to facilitate this process by providing premium quality flashcards that have been tried and tested by my friends and I.
+
+
+
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
