@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react'; // Importing React and hooks
 import Navbar from '../components/Navbar/navbar'; // Importing the Navbar component
 import AnimatedCard from '../components/AnimatedCard/AnimatedCard'; // Importing the AnimatedCard component
 import FloatingElements from '../components/FloatingElements/FloatingElements'; // Importing FloatingElements for background effects
-import { ArrowRight, Play } from 'lucide-react'; // Importing icons from Lucide
+import { ArrowRight, Play, Star } from 'lucide-react'; // Importing icons from Lucide
 import ImageSlider from '../components/Slider/slider'; // Importing the ImageSlider component
+import Image from 'next/image'; // Importing Next.js Image component for optimized images
+import styles from './page.module.css'; // Importing CSS module for styling
 
 // Main functional component for the Home Page
 export default function HomePage() {
@@ -19,7 +21,7 @@ export default function HomePage() {
   const testimonials = [
     { name: "Sarah Chen", role: "Medical Student", text: "FlashcardVault transformed my study routine. I aced my MCAT thanks to their comprehensive card sets!", rating: 5 },
     { name: "Marcus Rodriguez", role: "Language Learner", text: "The Spanish vocabulary cards are incredible. I'm finally fluent after using these for 6 months!", rating: 5 },
-    { name: "Dr. Emily Watson", role: "Resident Physician", text: "As a busy resident, these pre-made cards save me hours. The quality is exceptional.", rating: 5 }
+    { name: "Dr. Emily Watson", role: "Resident Physician", text: "As a busy resident, these pre-made cards save me hours. The quality is exceptional.", rating: 4 }
   ];
 
   // Effect to automatically change the displayed testimonial every 4 seconds
@@ -50,6 +52,7 @@ export default function HomePage() {
         <FloatingElements /> {/* Render floating decorative elements */}
         <div className="max-w-7xl mx-auto px-6 py-20 relative z-10"> {/* Centered container for content */}
           <div className="grid md:grid-cols-2 gap-12 items-center"> {/* Grid layout for two columns */}
+
             <AnimatedCard> {/* Animated card component for smooth transitions */}
               <div className="space-y-8"> {/* Vertical spacing for inner elements */}
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight"> {/* Main heading */}
@@ -59,8 +62,11 @@ export default function HomePage() {
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed"> {/* Subheading */}
-                  Unlock your learning potential with expertly crafted Anki flashcard decks.
+                  Unlock your learning potential with Anki decks covering the entire specification!
                 </p>
+
+
+
                 {backendMessage && ( // Conditional rendering based on backend message
                   <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-4"> {/* Status message container */}
                     <p className="text-green-800 font-medium"> {/* Message text */}
@@ -95,6 +101,15 @@ export default function HomePage() {
               </div>
             </AnimatedCard>
             {/* Additional content can be added here */}
+            <div className = {styles.imagecontainer}> 
+              <Image
+                src="/images/FlashcardVaultLogo.png" // Path to the hero image
+                width={450} 
+                height={300}
+                alt="Logo"
+                className="rounded-2xl shadow-lg object-cover" // Styling for the image
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -102,8 +117,98 @@ export default function HomePage() {
       <section className="py-20"> {/* Section for the image slider */}
         <ImageSlider /> {/* Render the ImageSlider component */}
       </section>
+
+      {/* Testimonials Marquee Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              What Our Students Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Join thousands of successful learners who transformed their studies
+            </p>
+          </div>
+          
+          <div className="relative overflow-hidden">
+            <style jsx>{`
+              @keyframes marquee {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+              .animate-marquee {
+                animation: marquee 30s linear infinite;
+              }
+              .animate-marquee:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+            <div className="flex animate-marquee space-x-8 w-max">
+              {/* Duplicate testimonials for seamless loop */}
+              {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-96 bg-white rounded-3xl shadow-xl p-8 border border-gray-100"
+                >
+                  <div className="flex justify-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  
+                  <blockquote className="text-lg text-gray-800 font-medium mb-6 leading-relaxed">
+                    &quot;{testimonial.text}&quot;
+                  </blockquote>
+                  
+
+                  {/* Displaying user details with a gradient background */}
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-rose-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </div>
+
+
+
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-gray-600 text-sm">
+                        {testimonial.role}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       
-      {/* Additional sections like Features, Testimonials, Call-to-Action, and Footer can follow here */}
+      {/* Additional sections like Features, Call-to-Action, and Footer can follow here */}
+
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Ready to Ace Your Exams?
+            </h2>
+            <p className="text-xl text-gray-600">
+              Join thousands of successful learners today!
+            </p>
+
+            <div className={styles.signupbutton}>
+              <button className="w-full bg-gradient-to-r from-rose-500 to-purple-600 text-white px-3 py-2.5 rounded-full text-sm font-semibold"> {/* Mobile Log In/Register button */}
+              Log In / Register
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
