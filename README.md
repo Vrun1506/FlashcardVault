@@ -1,5 +1,7 @@
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Vrun1506/FlashcardVault/main/public/images/FlashcardVaultLogo.jpeg" alt="Centered Image" width="300" />
+</div>
 
-![Flashcard Vault Logo](https://raw.githubusercontent.com/Vrun1506/FlashcardVault/main/public/images/FlashcardVaultLogo.jpeg)
 
 ## Welcome
 This is my EdTech business selling the A level flashcards, which I created and used while studying for my A level exams, at affordable prices. 
@@ -9,11 +11,47 @@ My aim is to help as many people ace their exams, one card at a time.
 Making flashcards can be a long and tedious process and I designed my website to facilitate this process by providing premium quality flashcards that have been tried and tested by my friends and I.
 
 
+
+## Installation
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+
+
+1) Clone the repository:
+
+```bash
+git clone https://github.com/Vrun1506/FlashcardVault
+```
+
+2) Change into the directory you've cloned by running the following command:
+```bash
+cd FlashcardVault
+```
+
+3) Download the Python packages by running the following commands:
+
+```bash
+# i) Create the virtual environment
+
+## Linux/MacOS
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows
+python -m venv venv
+venv\Scripts\activate # For CMD
+source venv/Scripts/activate # For Git Bash
+
+# ii) Install the required packages
+pip install -r requirements.txt
+```
+
+4) 
+
+
+run the development server:
 
 ```bash
 npm run dev

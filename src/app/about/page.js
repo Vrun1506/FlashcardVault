@@ -1,8 +1,9 @@
 "use client";
 
 import React from 'react';
-import Navbar from '../components/Navbar/navbar'; // Adjust if you're in a subfolder
-import styles from './aboutpage.module.css';
+import Navbar from '../components/Navbar/navbar'; // Importing the Navbar component
+import ImageSlider from 'src/components/Slider/slider'; // Importing the ImageSlider component
+// import styles from './aboutpage.module.css';
 import Image from 'next/image';
 
 export default function AboutPage() {
@@ -17,6 +18,7 @@ export default function AboutPage() {
         <p>We are committed to providing you with the best experience possible, whether you&apos;re here to learn, shop, or just explore.</p>
         <p>Our missions is to help you, the student, ace your exams one card at a time</p>
         <p>My website sells premium tried and tested flashcards at extremely affordable rates and see some of the results for yourself!</p>
+        <ImageSlider />
         <Image
           src="/images/about-us.jpg"
           alt="About Us"
