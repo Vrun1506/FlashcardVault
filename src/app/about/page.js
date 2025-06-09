@@ -1,8 +1,10 @@
 "use client";
 
 import React from 'react';
-import Navbar from '../components/Navbar/navbar'; // Importing the Navbar component
-import ImageSlider from 'src/components/Slider/slider'; // Importing the ImageSlider component
+import Navbar from '@/components/Navbar/navbar';
+import ImageSlider from '@/components/Slider/slider';
+
+
 // import styles from './aboutpage.module.css';
 import Image from 'next/image';
 
@@ -10,7 +12,8 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className={styles.main}>
+      <main className="min-h-screen bg-white p-6">
+        <div className="max-w-4xl mx-auto">
         <h1>About</h1>
         <p>Welcome to my website!</p>
         <p>Our team is passionate about what we do and we strive to exceed your expectations.</p>
@@ -19,14 +22,8 @@ export default function AboutPage() {
         <p>Our missions is to help you, the student, ace your exams one card at a time</p>
         <p>My website sells premium tried and tested flashcards at extremely affordable rates and see some of the results for yourself!</p>
         <ImageSlider />
-        <Image
-          src="/images/about-us.jpg"
-          alt="About Us"
-          width={600}
-          height={400}
-          className={styles.aboutImage}
-        />
         <p>Feel free to explore our site and learn more about us!</p>
+        </div>
       </main>
     </>
   );
