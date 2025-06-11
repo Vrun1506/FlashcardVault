@@ -9,12 +9,29 @@
 
 .imagecontainer {
   width: 600px;
-  height: 400px;
   display: flex;
+  flex-direction: column; /* Stack image and text vertically */
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   /* Fade-in animation */
   animation: fadeIn 2s ease-in-out forwards;
 }
 
+.imagecontainertext {
+  margin-top: 1rem; /* Adds spacing between image and text */
+}
+
+
+.signupbutton {
+  padding: 0.5rem 1rem; /* Padding for button */
+  border: none; /* No border */
+  border-radius: 0.25rem; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size */
+}
+.signupbutton button:hover {
+  scale:110%;
+  transition: all 0.3s ease-in-out; /* Smooth scaling effect */
+}
