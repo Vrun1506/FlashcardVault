@@ -4,9 +4,18 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes by default
 
-@app.route('/')
-def home():
-    return jsonify({"message": "Flask backend is running!"})
+@app.route('/api/login', methods = ['POST'])
+def login():
+    data = request.get_json()
+    print(data)
+    return {"message": "Received login data"}, 200
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    print(data)
+    return jsonify({"message": "Received register data"}), 200
+
 
 @app.route('/api/hello', methods=['GET'])
 def hello():
