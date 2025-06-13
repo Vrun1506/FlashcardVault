@@ -4,19 +4,38 @@
 
 
 ## Welcome
-This is my EdTech business selling the A level flashcards, which I created and used while studying for my A level exams, at affordable prices. 
+Welcome to Flashcard Vault where my aim is to help you ace your exams one card at a time. 
 
-My aim is to help as many people ace their exams, one card at a time. 
+This is a project I developed to save people's time when it comes to creating revision resources. 
 
-Making flashcards can be a long and tedious process and I designed my website to facilitate this process by providing premium quality flashcards that have been tried and tested by my friends and I.
 
+## Purpose of Project
+When it came to studying for my A levels, in some of my subjects, there were limited resources available so I had to be extremely careful and wise with how I used them up while revising for exams. 
+
+Through looking at some revision websites, I found that flashcards were particularly useful with studying certain subjects, but the existing ones were extremely vague and weren't to the required level of detail needed to secure the top grades. 
+
+Through making my own flashcards, I found it to be a painstaking process that would takes months to do for each subject, though once the desired endproduct was achieved, it was really easy to learn. 
+
+Therefore, to tackle this tedious process and save time, I designed my website to facilitate this process by providing premium quality flashcards that have been tried and tested by my friends and I as well as the opportunity to create custom flashcards through the AI Flashcard Maker I have implemented. 
+
+
+## Tech Stack and languages used
+
+Tech Stack:
+
+<li>Frontend Framework: Next.js
+<li>Backend Framework: Flask
+<li>Database: PostgreSQL
+<li>AI/LLM Integration: OpenRouter API (for Llama 3.3 LLM model), Langchain to implement custom behaviours. 
+<li>Cloud Storage: S3 bucket 
+<li>Payment Processing: Stripe API
+
+Languages used: JavaScript and Python 
 
 
 ## Installation
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-
 
 
 1) Clone the repository:
@@ -30,7 +49,7 @@ git clone https://github.com/Vrun1506/FlashcardVault
 cd FlashcardVault
 ```
 
-3) Download the Python packages by running the following commands:
+
 
 ```bash
 # i) Create the virtual environment
@@ -43,14 +62,30 @@ source venv/bin/activate
 python -m venv venv
 venv\Scripts\activate # For CMD
 source venv/Scripts/activate # For Git Bash
+```
 
+
+3) Download the Python packages by running the following commands:
+
+```bash
 # ii) Install the required packages
 pip install -r requirements.txt
 ```
 
-4) 
 
+4) Download the JavaScript packages by running the following command:
+```bash
+#Install the required JavaScript packages
+npm install
+```
 
+5) Run the Flask server using the following command:
+```bash
+# Run the Flask server
+flask --app server run
+```
+
+6) 
 run the development server:
 
 ```bash

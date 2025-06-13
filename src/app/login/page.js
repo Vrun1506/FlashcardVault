@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar/navbar";
+import Footer from "@/components/Footer/Footer";
 
 export default function AuthComponent({ error }) {
   const [activeTab, setActiveTab] = useState("login");
@@ -95,7 +96,6 @@ export default function AuthComponent({ error }) {
 
   return (
     <>
-      <Navbar />
 
       {/* Page background - white */}
       <div className="min-h-screen bg-white flex items-center justify-center px-4">
@@ -249,7 +249,10 @@ export default function AuthComponent({ error }) {
                 </motion.form>
               )}
             </AnimatePresence>
+
+            
           </div>
+          
         </div>
       </div>
     </>
