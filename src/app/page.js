@@ -248,8 +248,7 @@ export default function HomePage() {
         </section>
 
 
-        {/* Footer Section */}
-        <Footer /> {/* Render the Footer component */}
+
       </div>
     </>
   );

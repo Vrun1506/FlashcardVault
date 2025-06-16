@@ -249,10 +249,7 @@ export default function AuthComponent({ error }) {
                 </motion.form>
               )}
             </AnimatePresence>
-
-            
           </div>
-          
         </div>
       </div>
     </>
