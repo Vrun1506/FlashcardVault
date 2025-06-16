@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -8,10 +8,29 @@ export default function Footer() {
             
             {/* Link Section */}
             <div className="mb-6 text-sm text-gray-300 flex flex-col gap-2">
-              <a href="/about" className="hover:text-white transition">About</a>
-              <a href="#" className="hover:text-white transition">Contact</a>
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition">Terms of Service</a>
+              <Link 
+              href="/about" 
+              className="hover:text-white transition"
+              >About
+              </Link>
+      
+              <Link 
+              href="/contact" 
+              className="hover:text-white transition"
+              >Contact
+              </Link>
+
+              <Link 
+              href="/privacy-policy" 
+              className="hover:text-white transition"
+              >Privacy Policy
+              </Link>
+
+              <Link 
+              href="/tos" 
+              className="hover:text-white transition"
+              >Terms of Service
+              </Link>
             </div>
 
             {/* Copyright */}
