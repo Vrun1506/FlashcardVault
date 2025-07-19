@@ -125,9 +125,9 @@ export default function HomePage() {
             
             <div className="mt-8 flex justify-center">
               <Link 
-                href="/aigenerator"
-                className="group bg-gradient-to-r from-rose-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
-                Try Flashcard Maker AI
+                href="/ai-demo"
+                className="group bg-gradient-to-r from-blue-500 to-blue-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
+                View AI Demo
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -203,7 +203,7 @@ export default function HomePage() {
 
                     {/* Displaying user details with a gradient background */}
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-rose-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full flex items-center justify-center text-white font-bold text-lg">
                         {testimonial.name.charAt(0)}
                       </div>
 
@@ -238,11 +238,12 @@ export default function HomePage() {
                 
               </p>
               <br></br>
-              <div className={styles.signupbutton}>
-                <button className="w-full sm:w-auto bg-gradient-to-r from-rose-500 to-purple-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold">
-                  Sign Up Now
-                </button>
-              </div>
+              <Link 
+                href = "/login"
+                className="bg-gradient-to-r from-blue-500 to-blue-800 text-white px-4 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
+                >
+                  Sign up now for free
+                </Link>
             </div>
           </div>
         </section>

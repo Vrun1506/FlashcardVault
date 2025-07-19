@@ -7,13 +7,15 @@ import Footer from "@/components/Footer/Footer";
 
 export default function AuthComponent({ error }) {
   const [activeTab, setActiveTab] = useState("login");
-  const [loginMessage, setLoginMessage] = useState("");
-  const [registerMessage, setRegisterMessage] = useState("");
+  const [loginMessage, setLoginMessage] = useState(""); // We initialise a blank state for loginMessage to handle the login error or success messages
+  const [registerMessage, setRegisterMessage] = useState(""); // We initialise a blank state for registerMessage to handle the registration error or success messages
   const [isLoading, setIsLoading] = useState(false);
 
   // Backend URL - matching your Flask server exactly
   const API_BASE_URL = "http://127.0.0.1:5000";
 
+
+  // Handles submitting the data to the backend for registration. 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -30,6 +32,9 @@ export default function AuthComponent({ error }) {
       repeat_password: formData.get("repeat-password"),
     };
 
+
+
+    // Attempts to send the data to the backend for registrations
     try {
       const response = await fetch(`${API_BASE_URL}/api/register`, {
         method: "POST",
@@ -39,11 +44,16 @@ export default function AuthComponent({ error }) {
         body: JSON.stringify(data),
       });
 
+      // Handles the response from the backend (i.e. if the registration was successful or not)
+      const result = await response.json();
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        console.log("Response status:", response.status);
+        setRegisterMessage(result.error || "Registration failed.");
+        return;
+        
       }
 
-      const result = await response.json();
+      // If all checks pass, the state of the registerMessage is updated to reflect the success of the registration
       setRegisterMessage(result.message || "Registration successful!");
       
       // Optional: Clear form on success
@@ -58,6 +68,8 @@ export default function AuthComponent({ error }) {
     }
   };
 
+
+  // Handles submitting the data to the backend for login
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -71,6 +83,8 @@ export default function AuthComponent({ error }) {
       password: formData.get("password"),
     };
 
+
+    // Attempts to send the data to the backend for login
     try {
       const response = await fetch(`${API_BASE_URL}/api/login`, {
         method: "POST",
@@ -80,6 +94,7 @@ export default function AuthComponent({ error }) {
         body: JSON.stringify(data),
       });
 
+      // Handles the response from the backend (i.e. if the login was successful or not)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -94,6 +109,8 @@ export default function AuthComponent({ error }) {
     }
   };
 
+
+  // Rendering the UI component
   return (
     <>
 
@@ -240,11 +257,20 @@ export default function AuthComponent({ error }) {
                     {isLoading ? "Registering..." : "Register"}
                   </button>
                   {registerMessage && (
-                    <p className={`text-center mt-2 font-semibold ${
-                      registerMessage.includes("failed") ? "text-red-400" : "text-green-400"
-                    }`}>
+                    <p
+                      className={`text-center mt-2 font-semibold ${
+                        registerMessage.toLowerCase().includes("success") ? "text-green-400" : "text-red-400"
+                      }`}
+                    >
                       {registerMessage}
                     </p>
+                  )}
+
+
+                  {error && (
+                    <div className="text-red-400 text-sm font-bold text-center p-2 rounded-md">
+                      {error}
+                    </div>
                   )}
                 </motion.form>
               )}
