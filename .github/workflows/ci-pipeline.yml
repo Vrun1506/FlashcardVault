@@ -1,0 +1,67 @@
+# Name for your CI/CD pipeline
+name: Flashcard Vault CI Pipeline
+
+# Triggers: This pipeline runs on any push or pull request to the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Jobs: The tasks the pipeline will execute
+jobs:
+  # Job 1: Test and build the frontend (Next.js/React)
+  build-frontend:
+    # Use the latest version of Ubuntu to run the job
+    runs-on: ubuntu-latest
+
+    # Define the steps for this job
+    steps:
+    # 1. Check out your repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Set up Node.js (version 18)
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    # 3. Install npm dependencies for the frontend
+    - name: Install frontend dependencies
+      run: npm --prefix ./frontend install  # Assumes frontend is in a 'frontend' folder
+
+    # 4. Build the frontend project to check for build errors
+    - name: Build frontend
+      run: npm --prefix ./frontend run build
+
+    # 5. Run frontend tests (if you have them)
+    - name: Run frontend tests
+      run: npm --prefix ./frontend test
+
+  # Job 2: Test the backend (Python/Flask)
+  build-backend:
+    # Use the latest version of Ubuntu to run this job as well
+    runs-on: ubuntu-latest
+
+    # Define the steps for this job
+    steps:
+    # 1. Check out your repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Set up Python (version 3.9)
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    # 3. Install Python dependencies from requirements.txt
+    - name: Install backend dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ./backend/requirements.txt # Assumes backend is in a 'backend' folder and you have a requirements.txt file
+
+    # 4. Run backend tests using pytest (if you have them)
+    - name: Run backend tests
+      run: pytest ./backend/

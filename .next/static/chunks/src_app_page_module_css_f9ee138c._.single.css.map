@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/page.module.css"],"sourcesContent":["@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n.imagecontainer {\n  width: 600px;\n  display: flex;\n  flex-direction: column; /* Stack image and text vertically */\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n\n  /* Fade-in animation */\n  animation: fadeIn 2s ease-in-out forwards;\n}\n\n.imagecontainertext {\n  margin-top: 1rem; /* Adds spacing between image and text */\n}\n\n\n.signupbutton {\n  padding: 0.5rem 1rem; /* Padding for button */\n  border: none; /* No border */\n  border-radius: 0.25rem; /* Rounded corners */\n  cursor: pointer; /* Pointer cursor on hover */\n  font-size: 1rem; /* Font size */\n}\n.signupbutton button:hover {\n  scale:110%;\n  transition: all 0.3s ease-in-out; /* Smooth scaling effect */\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;AASA;;;;;;;;;;AAYA;;;;AAKA;;;;;;;;AAOA"}}]
+}
