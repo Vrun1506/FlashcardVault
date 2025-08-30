@@ -1,0 +1,16 @@
+blinker==1.9.0
+cffi==1.17.1
+click==8.2.1
+cryptography==45.0.6
+dotenv==0.9.9
+Flask==3.1.2
+flask-cors==6.0.1
+itsdangerous==2.2.0
+Jinja2==3.1.6
+jwt==1.4.0
+MarkupSafe==3.0.2
+psycopg2==2.9.10
+pycparser==2.22
+python-dotenv==1.1.1
+regex==2025.8.29
+Werkzeug==3.1.3
