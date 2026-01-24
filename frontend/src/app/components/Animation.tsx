@@ -51,7 +51,7 @@ const Animation = () => {
     const gallerySpacing = 0.3; // Horizontal spacing between cards
     const galleryY = 0; // Keep all cards at same Y position
 
-    // Initialize cards in gallery view on the left
+    // Initialise cards in gallery view on the left
     flashcards.forEach((card, i) => {
       card.updatePosition(galleryX - (i * gallerySpacing), galleryY, 0);
       card.updateRotation(0, Math.PI / 2, 0);
@@ -86,7 +86,7 @@ const Animation = () => {
           const galleryX_pos = galleryX - (galleryPosition * gallerySpacing);
 
           if (i < currentCardIndex) {
-            // Cards that finished - back in gallery at right end
+            // Move the finished card to the back of the gallery stack
             const finalPosition = i + (flashcards.length - currentCardIndex);
             const finalX = galleryX - (finalPosition * gallerySpacing);
             card.updatePosition(finalX, galleryY, 0);
@@ -94,7 +94,7 @@ const Animation = () => {
           } else if (i === currentCardIndex && currentCardIndex < flashcards.length) {
             // Current card animating
             
-            // Phase 1: Move from gallery to center (0 - 0.15)
+            // Move the card from the gallery to the centre of the laptop screen
             if (cardProgress < 0.15) {
               const moveProgress = cardProgress / 0.15;
               const easedMove = 1 - Math.pow(1 - moveProgress, 3);
@@ -111,7 +111,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI / 2, 0);
               setCursorVisible(false);
             }
-            // Phase 2: Rotate to face user (0.15 - 0.28)
+            // Need to rotate card to face the user from the side gallery
             else if (cardProgress < 0.28) {
               const rotateProgress = (cardProgress - 0.15) / 0.13;
               const easeRotate = 1 - Math.pow(1 - rotateProgress, 2);
@@ -119,7 +119,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI / 2 - (easeRotate * Math.PI / 2), 0);
               setCursorVisible(false);
             }
-            // Phase 3: Show cursor moving slowly (0.28 - 0.48)
+            // Cursor moves to card and clicks to rotate
             else if (cardProgress < 0.48) {
               const cursorProgress = (cardProgress - 0.28) / 0.20;
               const easedCursor = cursorProgress < 0.5 
@@ -172,7 +172,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI, 0);
               setCursorVisible(false);
             }
-            // Phase 7: Flip back to front (0.78 - 0.88)
+            // Flip back to front
             else if (cardProgress < 0.88) {
               const flipBackProgress = (cardProgress - 0.78) / 0.10;
               const easeFlipBack = flipBackProgress < 0.5 
@@ -183,7 +183,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI - (easeFlipBack * Math.PI), 0);
               setCursorVisible(false);
             }
-            // Phase 8: Return to gallery (0.88 - 1.0)
+            // Return card to back of gallery
             else {
               const returnProgress = (cardProgress - 0.88) / 0.12;
               const easedReturn = returnProgress * returnProgress * returnProgress;
@@ -199,8 +199,18 @@ const Animation = () => {
               setCursorVisible(false);
             }
           } else {
-            // Cards waiting in gallery
-            card.updatePosition(galleryX_pos, galleryY, 0);
+            // Cards waiting in gallery - move forward
+            let adjustedX = galleryX_pos;
+            
+            if (currentCardIndex < flashcards.length && i > currentCardIndex && cardProgress >= 0.88) {
+              // Move cards forward to make room for returning card
+              const moveProgress = (cardProgress - 0.88) / 0.12;
+              const easedMove = moveProgress * moveProgress * moveProgress;
+              const shiftAmount = gallerySpacing * easedMove;
+              adjustedX = galleryX_pos + shiftAmount;
+            }
+            
+            card.updatePosition(adjustedX, galleryY, 0);
             card.updateRotation(0, Math.PI / 2, 0);
           }
         });
@@ -212,7 +222,7 @@ const Animation = () => {
           
           // Reset all cards to gallery
           flashcards.forEach((card, i) => {
-            card.updatePosition(galleryX, 1.5 - (i * gallerySpacing), 0);
+            card.updatePosition(galleryX - (i * gallerySpacing), galleryY, 0);
             card.updateRotation(0, Math.PI / 2, 0);
           });
           setCursorVisible(false);

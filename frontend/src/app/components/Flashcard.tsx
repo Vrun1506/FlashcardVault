@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 
-
 class Flashcard {
   mesh: THREE.Mesh;
   userData: {
