@@ -1,12 +1,6 @@
 import React from "react";
 
-interface NavButtonProps {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}
-
-const NavButton = ({ label, active, onClick }: NavButtonProps) => (
+const NavButton = ({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) => (
   <button
     onClick={onClick}
     className={`px-6 py-2 font-medium transition-colors ${
