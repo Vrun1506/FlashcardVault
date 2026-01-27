@@ -7,6 +7,10 @@ const Animation = () => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: -1000, y: -1000 });
   const [cursorVisible, setCursorVisible] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cursorScale, setCursorScale] = useState(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cursorClicking, setCursorClicking] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -51,7 +55,7 @@ const Animation = () => {
     const gallerySpacing = 0.3; // Horizontal spacing between cards
     const galleryY = 0; // Keep all cards at same Y position
 
-    // Initialise cards in gallery view on the left
+    // Initialize cards in gallery view on the left
     flashcards.forEach((card, i) => {
       card.updatePosition(galleryX - (i * gallerySpacing), galleryY, 0);
       card.updateRotation(0, Math.PI / 2, 0);
@@ -86,7 +90,7 @@ const Animation = () => {
           const galleryX_pos = galleryX - (galleryPosition * gallerySpacing);
 
           if (i < currentCardIndex) {
-            // Move the finished card to the back of the gallery stack
+            // Cards that finished - back in gallery at right end
             const finalPosition = i + (flashcards.length - currentCardIndex);
             const finalX = galleryX - (finalPosition * gallerySpacing);
             card.updatePosition(finalX, galleryY, 0);
@@ -94,7 +98,7 @@ const Animation = () => {
           } else if (i === currentCardIndex && currentCardIndex < flashcards.length) {
             // Current card animating
             
-            // Move the card from the gallery to the centre of the laptop screen
+            // Phase 1: Move from gallery to center (0 - 0.15)
             if (cardProgress < 0.15) {
               const moveProgress = cardProgress / 0.15;
               const easedMove = 1 - Math.pow(1 - moveProgress, 3);
@@ -111,7 +115,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI / 2, 0);
               setCursorVisible(false);
             }
-            // Need to rotate card to face the user from the side gallery
+            // Phase 2: Rotate to face user (0.15 - 0.28)
             else if (cardProgress < 0.28) {
               const rotateProgress = (cardProgress - 0.15) / 0.13;
               const easeRotate = 1 - Math.pow(1 - rotateProgress, 2);
@@ -119,7 +123,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI / 2 - (easeRotate * Math.PI / 2), 0);
               setCursorVisible(false);
             }
-            // Cursor moves to card and clicks to rotate
+            // Phase 3: Show cursor moving slowly (0.28 - 0.48)
             else if (cardProgress < 0.48) {
               const cursorProgress = (cardProgress - 0.28) / 0.20;
               const easedCursor = cursorProgress < 0.5 
@@ -172,7 +176,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI, 0);
               setCursorVisible(false);
             }
-            // Flip back to front
+            // Phase 7: Flip back to front (0.78 - 0.88)
             else if (cardProgress < 0.88) {
               const flipBackProgress = (cardProgress - 0.78) / 0.10;
               const easeFlipBack = flipBackProgress < 0.5 
@@ -183,7 +187,7 @@ const Animation = () => {
               card.updateRotation(0, Math.PI - (easeFlipBack * Math.PI), 0);
               setCursorVisible(false);
             }
-            // Return card to back of gallery
+            // Phase 8: Return to gallery (0.88 - 1.0)
             else {
               const returnProgress = (cardProgress - 0.88) / 0.12;
               const easedReturn = returnProgress * returnProgress * returnProgress;
@@ -199,7 +203,7 @@ const Animation = () => {
               setCursorVisible(false);
             }
           } else {
-            // Cards waiting in gallery - move forward
+            // Cards waiting in gallery - move forward during Phase 8
             let adjustedX = galleryX_pos;
             
             if (currentCardIndex < flashcards.length && i > currentCardIndex && cardProgress >= 0.88) {
@@ -254,7 +258,7 @@ const Animation = () => {
   return (
     <div className="relative w-full h-full">
       <div ref={mountRef} className="w-full h-full" />
-      <Cursor position={cursorPosition} visible={cursorVisible} />
+      <Cursor position={cursorPosition} visible={cursorVisible} scale={cursorScale} clicking={cursorClicking} />
     </div>
   );
 };

@@ -15,8 +15,8 @@ const HomeScreen = () => {
       
       <main className="max-w-7xl mx-auto px-8 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold text-slate-800 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-blue-600">
-            Master Your Learning
+          <h2 className="text-6xl font-bold text-slate-800 mb-6">
+              Master Your Learning
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Helping you achieve your study goals, one card at a time
