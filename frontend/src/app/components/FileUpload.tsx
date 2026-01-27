@@ -63,7 +63,7 @@ const FileUpload = () => {
       }
 
       // We send the file_path from storage, NOT the actual file data
-      const response = await fetch(`${apiUrl}/convert-from-storage`, {
+      const response = await fetch(`${apiUrl}/create-flashcards`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,

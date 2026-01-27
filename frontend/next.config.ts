@@ -1,12 +1,3 @@
-// import type { NextConfig } from "next";
-
-// const nextConfig: NextConfig = {
-//   /* config options here */
-//   reactCompiler: true,
-// };
-
-// export default nextConfig;
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -39,8 +30,13 @@ const nextConfig: NextConfig = {
           // 2. Content Security Policy (CSP)
           {
              key: "Content-Security-Policy",
-             // CAUTION: If your backend is NOT on port 8000, update the port number at the end of this line!
-             value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.supabase.co; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self' https://*.supabase.co http://127.0.0.1:8000;",
+             /**
+              * - default-src 'self': Only allow content from your own domain.
+              * - script-src: Allows Supabase and essential Next.js scripts.
+              * - img-src: Allows local images, blobs, data URIs, and Google profile pictures.
+              * - connect-src: Allows connections to Supabase and your FastAPI backend at port 8000.
+              */
+             value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.supabase.co; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://*.googleusercontent.com; font-src 'self'; connect-src 'self' https://*.supabase.co http://127.0.0.1:8000;",
           }
         ],
       },
