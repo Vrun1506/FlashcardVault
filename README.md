@@ -6,10 +6,7 @@ Tech stack: TypeScript, Python, Next.js, FastAPI, Firebase.
 
 Things to do: 
 
-1) Finish setting up my frontend (log in page, demo page, contact page and add links to all pages)
-2) Set up authentication with Firebase
-3) Sort out API stuff with LLMs and things. Sort out prompt and how I'm going to mess around there. 
-4) See if I have a legitimate purpose for incorporating LangChain into this. 
-5) Figure out storage solution for flashcards (maybe OCI or AWS?)
-6) See if it's worth putting behind a paywall. 
+1) Finish auth set up in the backend.
+2) Do a PoC solution using LLMs, consider Pinecone vs ChromaDB for vector databases. Set up chunking technique after doing some research into how it works. 
+3) Gemini wrapper for setting up image analysis because our multi-modal RAG feature isn't going to be working with anything associated with 
 
